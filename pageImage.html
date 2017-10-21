@@ -11,6 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc5-MroUXzK7TIdJaZiAaTVcq6jz_iLV0&callback=initMap">
+    </script>
 </head>
 
 <body>
@@ -32,16 +35,34 @@
         </div>
     </nav>
 
-    <dir>
-        <table align="center">
-            <tr>
-                <td>
-                    
-                </td>
-            </tr>
-        </table>
-    </dir>
-
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4" id="main">
+            <table align="center">
+                <tr align="center">
+                    <td align="center">
+                        <br><img src="" alt="">
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td align="center">
+                        <br><button type="button" class="btn btn-primary btn-block" id="pic"><b>Add Photo</b></button>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td align="center">
+                        <br><textarea class="form-control" rows="5" id="comment"></textarea>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td>
+                        <div id="map"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
 </body>
 
 </html>

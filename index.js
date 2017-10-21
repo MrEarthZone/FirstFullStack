@@ -29,5 +29,28 @@ $(document).ready(function () {
     $("#logout").click(function () {
         localStorage.removeItem("id");
     });
-    console.log(location.protocol);
+    //picture
+    $("#pic").click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            $("#show_location").text("Geolocation is not supported by this browser.");
+        }
+    });
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var log = position.coords.longitude;
+        function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
+    }
+
 });
