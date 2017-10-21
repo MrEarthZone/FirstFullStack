@@ -1,18 +1,40 @@
 {
   "regis": [
     {
-      "id": 0,
       "email": "admin.test@gmail.com",
-      "name": "sirom wongwiriyakit",
+      "name": "admin",
       "username": "admin028",
-      "password": "028"
+      "password": "028",
+      "id": 0
     },
     {
-      "email": "",
-      "name": "",
-      "username": "",
-      "password": "",
+      "email": "s",
+      "name": "s",
+      "username": "s",
+      "password": "s",
       "id": 1
+    },
+    {
+      "email": "test1@gmail.com",
+      "name": "test",
+      "username": "test",
+      "password": "test",
+      "id": 2
+    },
+    {
+      "email": "test1@gmail.com",
+      "name": "test",
+      "username": "admin",
+      "password": "111",
+      "id": 3
+    }
+  ],
+  "post": [
+    {
+      "which": "",
+      "image": "",
+      "text": "",
+      "where": ""
     }
   ]
 }
