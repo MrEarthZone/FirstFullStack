@@ -1,0 +1,18 @@
+{
+  "regis": [
+    {
+      "id": 0,
+      "email": "admin.test@gmail.com",
+      "name": "sirom wongwiriyakit",
+      "username": "admin028",
+      "password": "028"
+    },
+    {
+      "email": "",
+      "name": "",
+      "username": "",
+      "password": "",
+      "id": 1
+    }
+  ]
+}
