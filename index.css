@@ -21,10 +21,6 @@ a._l8p4s, a._l8p4s:visited {
     font-weight: 600;
     line-height: 28px;
 }
-#main{
-        background-color: #fff;
-        border: 1px solid #e6e6e6;
-}
 input{
     margin: 0 40px 6px;
 }
@@ -42,7 +38,42 @@ a{
     height: 400px;
     width: 600px;
    }
+#location_page{
+    height: 100%;
+    width: 100%;
+}
 #img{
     height: 50%;
     width: 50%;
+}
+#remove{
+    color: #E77272;
+}
+#show_post{
+    width: 100%;
+}
+#name_bar{
+    border: 1px solid #ccc!important;
+}
+td{
+    padding: 0.01em 16px;
+    padding-right: 16px;
+    background-color: white 
+}
+#name_p{
+    margin-bottom: 20px;
+}
+tr{
+    background-color: white ;
+    width: 120%
+}
+#space{
+    background-color: #f2f2f2;
+}
+#img_post_show{
+    height: 600px;
+    width: 664px;
+}
+#remove_space{
+    padding: 0px;
 }

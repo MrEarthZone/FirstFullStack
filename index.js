@@ -67,7 +67,59 @@ $(document).ready(function () {
             log: log_post,
             lat: lat_post
         });
+        localStorage.removeItem("lat");
+        localStorage.removeItem("log");
+        localStorage.removeItem("img");
+        window.location = "pageHome.html";
     });
+
+    //home
+    $.getJSON("http://localhost:3000/posts", function (data) {
+        for (i = 0; i < data.length; i++) {
+            var id_post = data[i].post_id;
+            var image = data[i].image;
+            var comment = data[i].text;
+            search_name(id_post, image, comment);
+        }
+    });
+    function search_name(id_post, image, comment) {
+        $.getJSON("http://localhost:3000/regis", function (data) {
+            for (i = 0; i < data.length; i++) {
+                if (id_post == data[i].id) {
+                    $("#show_post").prepend("<tr id=\"name_bar\"><td><br><p><b>What happen : </b>" + comment + "</p><br></td></tr>");
+                    $("#show_post").prepend("<tr><td id=\"remove_space\" align=\"center\"><img id=\"img_post_show\" src=" + image +"></td></tr>");
+                        $("#show_post").prepend("<tr id=\"name_bar\"><td><br><p id=\"name_p\"><b>" + data[i].name + "</b></p></td></tr>");
+                    $("#show_post").prepend("<tr><td id=\"space\"><br></td></tr>");
+                }
+            }
+        });
+    }
+    //location_page
+    $$("#post").click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(location_page);
+        } else {
+            $("#location_page").text("Geolocation is not supported by this browser.");
+        }
+    });
+
+    function location_page(position) {
+        var lat = position.coords.latitude;
+        var log = position.coords.longitude;
+        localStorage.setItem("lat", lat);
+        localStorage.setItem("log", log);
+        var uluru = { lat: lat, lng: log };
+        var map = new google.maps.Map(document.getElementById('loaction_page'), {
+            zoom: 17,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+        console.log(lat);
+    }
+    console.log
 });
 //picture
 function readURL(input) {
