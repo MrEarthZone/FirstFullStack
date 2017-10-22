@@ -38,9 +38,9 @@ a{
     height: 400px;
     width: 600px;
    }
-#location_page{
-    height: 100%;
-    width: 100%;
+.map_page_{
+    height: 443px;
+    width: 658px;
 }
 #img{
     height: 50%;
@@ -50,6 +50,9 @@ a{
     color: #E77272;
 }
 #show_post{
+    width: 100%;
+}
+#setting_post{
     width: 100%;
 }
 #name_bar{
@@ -76,4 +79,10 @@ tr{
 }
 #remove_space{
     padding: 0px;
+    padding-right: 0px;
+    width: 50px;
+    height: 50px;
+}
+#searchPin_border{
+    border: 1px solid #ccc!important;
 }

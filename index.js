@@ -95,31 +95,44 @@ $(document).ready(function () {
         });
     }
     //location_page
-    $$("#post").click(function () {
+    $("#searchPin").click(function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(location_page);
         } else {
-            $("#location_page").text("Geolocation is not supported by this browser.");
+            $("#map_page").text("Geolocation is not supported by this browser.");
         }
     });
 
     function location_page(position) {
+        $("#map_page").addClass("map_page_");
+        $("#searchPin").html(" ");
         var lat = position.coords.latitude;
         var log = position.coords.longitude;
+        console.log(lat+" "+log);
         localStorage.setItem("lat", lat);
         localStorage.setItem("log", log);
         var uluru = { lat: lat, lng: log };
-        var map = new google.maps.Map(document.getElementById('loaction_page'), {
-            zoom: 17,
+        var map = new google.maps.Map(document.getElementById('map_page'), {
+            zoom: 16,
             center: uluru
         });
         var marker = new google.maps.Marker({
             position: uluru,
             map: map
         });
-        console.log(lat);
+        $.getJSON("http://localhost:3000/posts", function (data) {
+            for (i = 0; i < data.length; i++) {
+                var lat = data[i].lat;
+                var log = data[i].log;
+                console.log(lat+" "+log);
+                var uluru = { lat: lat, lng: log };
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+        });
     }
-    console.log
 });
 //picture
 function readURL(input) {
@@ -133,7 +146,6 @@ function readURL(input) {
                 .height(300);
             localStorage.setItem("img", e.target.result);
         };
-
         reader.readAsDataURL(input.files[0]);
     }
 }
