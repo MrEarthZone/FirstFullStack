@@ -29,28 +29,31 @@ $(document).ready(function () {
     $("#logout").click(function () {
         localStorage.removeItem("id");
     });
-    //picture
-    $("#pic").click(function () {
+    //map
+    $("#location").click(function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(initMap);
         } else {
             $("#show_location").text("Geolocation is not supported by this browser.");
         }
     });
-    function showPosition(position) {
+
+    function initMap(position) {
         var lat = position.coords.latitude;
         var log = position.coords.longitude;
-        function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 4,
-              center: uluru
-            });
-            var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-            });
-          }
+        var uluru = { lat: lat, lng: log };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
     }
+    //picture
+    
+    
+
 
 });
