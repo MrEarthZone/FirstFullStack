@@ -41,6 +41,8 @@ $(document).ready(function () {
     function initMap(position) {
         var lat = position.coords.latitude;
         var log = position.coords.longitude;
+        localStorage.setItem("lat", lat);
+        localStorage.setItem("log", log);
         var uluru = { lat: lat, lng: log };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 17,
@@ -51,9 +53,35 @@ $(document).ready(function () {
             map: map
         });
     }
-    //picture
-    
-    
-
-
+    //post
+    $("#post").click(function () {
+        var id_post = localStorage.getItem("id");
+        var lat_post = localStorage.getItem("lat");
+        var log_post = localStorage.getItem("log");
+        var text_post = $("#comment").val();
+        var img_post = localStorage.getItem("img");
+        $.post("http://localhost:3000/posts", {
+            post_id: id_post,
+            image: img_post,
+            text: text_post,
+            log: log_post,
+            lat: lat_post
+        });
+    });
 });
+//picture
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img')
+                .attr('src', e.target.result)
+                .width(400)
+                .height(300);
+            localStorage.setItem("img", e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
