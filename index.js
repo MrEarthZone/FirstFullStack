@@ -195,9 +195,9 @@ function readURL(input) {
 }
 //delete
 function deleter(id){
-    console.log(id);
     $.ajax({
         url: "http://localhost:3000/posts/"+id+"",
         type: "DELETE"
     });
+    window.location = "setting.html";
 };
