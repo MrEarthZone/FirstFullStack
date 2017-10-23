@@ -163,20 +163,16 @@ $(document).ready(function () {
         var id = localStorage.getItem("id");
         for (i = 0; i < data.length; i++) {
             if (data[i].post_id == id) {
-                var id = data[i].id;
+                var id2 = data[i].id;
                 var image = data[i].image;
                 var comment = data[i].text;
-                search_delete(id, image, comment);
-                console.log(id);
+                $("#delete_post").prepend("<tr id=\"delete\"><td id=\"name_bar\"><br><p><b>What happen : </b>" + comment + "</p><br></td></tr>");
+                $("#delete_post").prepend("<tr id=\"delete\"><td align=\"center\"><img id=\"img_post_delete\" src=" + image + "></td></tr>");
+                $("#delete_post").prepend("<tr id=\"delete\"><td align=\"center\"><button type=\"button\" class=\"btn btn-danger\" onclick=\"deleter("+id2+")\">Delete</button></td></tr>");
+                $("#delete_post").prepend("<tr id=\"delete\"><td id=\"space\"><br></td></tr>");
             }
         }
     });
-    function search_delete(id, image, comment) {
-            $("#delete_post").prepend("<tr id=\"delete\"><td id=\"name_bar\"><br><p><b>What happen : </b>" + comment + "</p><br></td></tr>");
-            $("#delete_post").prepend("<tr id=\"delete\"><td align=\"center\"><img id=\"img_post_delete\" src=" + image + "></td></tr>");
-            $("#delete_post").prepend("<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleter("+id+")\">Delete</button>");
-            $("#delete_post").prepend("<tr id=\"delete\"><td id=\"space\"><br></td></tr>");
-    }
 });
 //picture
 function readURL(input) {
