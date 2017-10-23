@@ -48,6 +48,7 @@ a{
 }
 #remove{
     color: #E77272;
+    
 }
 #show_post{
     width: 100%;
@@ -85,4 +86,12 @@ tr{
 }
 #searchPin_border{
     border: 1px solid #ccc!important;
+}
+#delete{
+    width: 100px;
+    height: 100px;
+}
+#img_post_delete {
+    height: 300px;
+    width: 300px;
 }
