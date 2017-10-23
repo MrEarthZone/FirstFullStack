@@ -87,8 +87,8 @@ $(document).ready(function () {
             for (i = 0; i < data.length; i++) {
                 if (id_post == data[i].id) {
                     $("#show_post").prepend("<tr id=\"name_bar\"><td><br><p><b>What happen : </b>" + comment + "</p><br></td></tr>");
-                    $("#show_post").prepend("<tr><td id=\"remove_space\" align=\"center\"><img id=\"img_post_show\" src=" + image +"></td></tr>");
-                        $("#show_post").prepend("<tr id=\"name_bar\"><td><br><p id=\"name_p\"><b>" + data[i].name + "</b></p></td></tr>");
+                    $("#show_post").prepend("<tr><td id=\"remove_space\" align=\"center\"><img id=\"img_post_show\" src=" + image + "></td></tr>");
+                    $("#show_post").prepend("<tr id=\"name_bar\"><td><br><p id=\"name_p\"><b>" + data[i].name + "</b></p></td></tr>");
                     $("#show_post").prepend("<tr><td id=\"space\"><br></td></tr>");
                 }
             }
@@ -108,7 +108,7 @@ $(document).ready(function () {
         $("#searchPin").html(" ");
         var lat = position.coords.latitude;
         var log = position.coords.longitude;
-        console.log(lat+" "+log);
+        console.log(lat + " " + log);
         localStorage.setItem("lat", lat);
         localStorage.setItem("log", log);
         var uluru = { lat: lat, lng: log };
@@ -124,7 +124,7 @@ $(document).ready(function () {
             for (i = 0; i < data.length; i++) {
                 var lat = data[i].lat;
                 var log = data[i].log;
-                console.log(lat+" "+log);
+                console.log(lat + " " + log);
                 var uluru = { lat: lat, lng: log };
                 var marker = new google.maps.Marker({
                     position: uluru,
@@ -133,6 +133,32 @@ $(document).ready(function () {
             }
         });
     }
+    //setting
+    $.getJSON("http://localhost:3000/regis", function (data) {
+        for (i = 0; i < data.length; i++) {
+            if (data[i].id == localStorage.getItem("id")) {
+                $("#email_setting").attr("value", data[i].email);
+                $("#name_setting").attr("value", data[i].name);
+                $("#user_setting").attr("value", data[i].username);
+                $("#password_setting").attr("value", data[i].password);
+                var position = i;
+                $("#done_btn").click(function () {
+                    data[position].email = $("#email_setting").val();
+                    data[position].name = $("#name_setting").val();
+                    data[position].username = $("#user_setting").val();
+                    data[position].password = $("#password_setting").val();
+                    $.ajax({
+                        url: "http://localhost:3000/regis/"+data[position].id,
+                        type: "PUT",
+                        data: data[position]
+                    });
+                    console.log(data[position]);
+                    window.location = "setting.html";
+                });
+            }
+        }
+    });
+
 });
 //picture
 function readURL(input) {
